@@ -1,4 +1,4 @@
-Ωƒ%\VignetteIndexEntry{Introduction to proBAMr}
+%\VignetteIndexEntry{Introduction to proBAMr}
 %\VignetteKeywords{Proteogenomics, Data integration, Protein assembly}
 %\VignettePackage{proBAMr}
 \documentclass[11pt]{article}
