@@ -48,9 +48,8 @@ PrepareAnnotationGENCODE <- function(gtfFile, CDSfasta, pepfasta,
     message("Build TranscriptDB object (txdb.sqlite) ... ", appendLF=TRUE)    
     txdb <- makeTxDbFromGFF(file=gtfFile,
         format="gtf",
-        exonRankAttributeName=NA,
         dataSource="Gencode v19",
-        species="Homo sapiens")
+        organism="Homo sapiens")
 
 
     saveDb(txdb, file=paste(annotation_path, '/txdb.sqlite', sep=''))
