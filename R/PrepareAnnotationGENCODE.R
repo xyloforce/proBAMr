@@ -324,7 +324,7 @@ PrepareAnnotationGENCODE <- function(gtfFile, CDSfasta, pepfasta,
     if(splice_matrix){
         message("Prepare exon splice information (splicemax.RData) ... ", 
                 appendLF=FALSE)
-        index <- which(elementLengths(exonByTx)==1)
+        index <- which(elementNROWS(exonByTx)==1)
         exonByTx_mul <- exonByTx[-index]
         exons_mul <- IRanges::as.data.frame(exonByTx_mul)
         exonslist <- split(exons_mul, exons_mul$group_name)
