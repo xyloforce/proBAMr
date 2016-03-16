@@ -1,7 +1,7 @@
 Package: proBAMr
 Type: Package
 Title: Generating SAM file for PSMs in shotgun proteomics data
-Version: 1.5.1
+Version: 1.5.2
 Date: 2015-04-09
 Author: Xiaojing Wang
 Maintainer: Xiaojing Wang <xiaojing.wang@vanderbilt.edu>
@@ -14,3 +14,4 @@ Imports: S4Vectors (>= 0.9.25), GenomicRanges, Biostrings, GenomicFeatures,
         rtracklayer
 Suggests: RUnit, BiocGenerics
 biocViews: Proteomics, MassSpectrometry, Software, Visualization
+PackageStatus: Deprecated
