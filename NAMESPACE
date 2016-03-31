@@ -1,10 +1,10 @@
-import(S4Vectors)
+import(Biostrings)
+import(GenomicFeatures)
+#import(rtracklayer)
 import(IRanges)
 import(GenomicRanges)
-import(Biostrings)
-#import(rtracklayer)
 import(AnnotationDbi)
-import(GenomicFeatures)
+importFrom("utils", "read.delim")
 
 importFrom(rtracklayer,browserSession, ucscTableQuery,
             tableNames, getTable, trackNames, ucscSchema)

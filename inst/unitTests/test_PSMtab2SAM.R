@@ -9,8 +9,11 @@ test_PSMtab2SAM <- function()
         package="proBAMr"), sep='\t', header=TRUE)
     load(system.file("extdata/res", "SAM.RData", package="proBAMr"))
     
-    checkIdentical(PSMtab2SAM(passedPSM, XScolumn='mvh', exon, proteinseq, 
-        procodingseq), SAM)    
+    tmp <- PSMtab2SAM(passedPSM, XScolumn='mvh', exon, proteinseq, 
+        procodingseq)
+	rownames(tmp) <- NULL
+	rownames(SAM) <- NULL
+	checkIdentical(tmp, SAM)    
     checkEquals(dim(SAM)[2], 21)
     checkTrue(!is.na(SAM[1, 1]))
     checkEqualsNumeric(as.integer(SAM[1, 5]), 255)    
