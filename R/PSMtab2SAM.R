@@ -121,6 +121,7 @@ PSMtab2SAM <- function(passedPSM, XScolumn='mvh', exon_anno, proteinseq,
         XN <- paste('XN:i:', passedPSM[i, 'num_missed_cleavages'], sep='')
         XT <- paste('XT:i:', passedPSM[i, 'NTT'], sep='')
         
+        pep_g = ''
         if(length(idx) > 0){
             pep_g <- 'N'
         }
