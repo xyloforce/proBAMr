@@ -29,6 +29,7 @@
 PSMtab2SAM <- function(passedPSM, XScolumn='mvh', exon_anno, proteinseq, 
     procodingseq, ...)
 {
+    print("starting analysis")
     options(stringsAsFactors=FALSE)
     #passedPSM
     PEP <- passedPSM[, 'peptide']
@@ -44,9 +45,9 @@ PSMtab2SAM <- function(passedPSM, XScolumn='mvh', exon_anno, proteinseq,
     SAM <- c()
 
     spectrumcount <- table(Spectrumid)
-
-    for(i in 1:dim(passedPSM)[1]){
-        #print(i)
+    pb = txtProgressBar(min = 1,
+                     max = dim(passedPSM)[1])
+    for(i in seq_len(dim(passedPSM)[1])) {
         peptide <- PEP[i]
         QNAME <- Spectrumid[i]
         idx <- grep(peptide, proteinseq[, 'peptide'], fixed=TRUE)
@@ -66,7 +67,7 @@ PSMtab2SAM <- function(passedPSM, XScolumn='mvh', exon_anno, proteinseq,
             res <- c(FLAG, RNAME, POS, MAPQ, CIGAR, RNEXT, PNEXT, TLEN, 
                     as.character(SEQ), QUAL, XA)
             res <-  unique(data.frame(t(res))) 
-        }else{
+        } else {
             pro <- proteinseq[idx, ]
             sta_pos <- unlist(lapply(pro[, 'peptide'], function(x) 
                         regexpr(peptide, x, fixed=TRUE)))
@@ -133,8 +134,9 @@ PSMtab2SAM <- function(passedPSM, XScolumn='mvh', exon_anno, proteinseq,
         
         res <- cbind(QNAME, res, NH, XL, XP, XC, XS, XM, XN, XT, XG)    
         SAM <- rbind(SAM, res)
+        setTxtProgressBar(pb, i)
     }
-
+    close(pb)
     SAM
 
 }
@@ -286,9 +288,3 @@ PSMtab2SAM <- function(passedPSM, XScolumn='mvh', exon_anno, proteinseq,
                 as.character(SEQ), QUAL, XA)
     tmp
 }
-
-
-
-
-
-
